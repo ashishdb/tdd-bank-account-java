@@ -41,7 +41,11 @@ public class AccountTest {
 
     @Test
     void transferFromOneAccountToOtherAccount() {
-         if(accountDebtor.checkBalance()>amount)
-            accountCreditor.transfer(amount);
+         if(accountDebtor.checkBalance()>0) {
+             accountDebtor.withdraw(amount);
+             accountCreditor.deposit(amount);
+             assertThat(accountDebtor.checkBalance()).isEqualTo(0);
+             assertThat(accountCreditor.checkBalance()).isEqualTo(10);
+         }
     }
 }

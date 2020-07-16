@@ -18,15 +18,10 @@ public class Account {
         return balance;
     }
 
-    public void transfer(int amount) {
-        if(checkBalance()>amount) {
-            withdraw(amount);
-            deposit(amount);
-        }
-    }
 
-    private void withdraw(int amount) {
+    public int withdraw(int amount) {
         balance -=amount;
+        return balance;
     }
 
 }
